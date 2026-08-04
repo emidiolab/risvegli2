@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risvegli — Turismo Trasformativo | Non sei rotto, sei in letargo</title>
+<meta name="description" content="Risvegli è il primo ecosistema di turismo trasformativo: la libertà di una vacanza d'autore con una rete di cura professionale e mai obbligatoria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#F9F6F0; --crema-2:#F1EBDF;
+  --terra:#B85D43; --terra-dark:#8F4330;
+  --salvia:#5C7457; --salvia-deep:#43583F;
+  --bosco:#242D21;
+  --oro:#C69749; --oro-bright:#DCAF5E;
+  --ink:#3A3226; --ink-soft:#6B6152;
+  --crema-su-scuro:#EDE7D8;
+  --f-display:"Fraunces",Georgia,serif;
+  --f-body:"Karla",-apple-system,sans-serif;
+  --ease:cubic-bezier(.22,.61,.21,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--crema);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--oro);color:var(--bosco)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.08;color:var(--terra)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+.section{padding:clamp(4.5rem,9vw,8.5rem) 0}
+.grain{position:fixed;inset:0;z-index:120;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--salvia);display:inline-flex;align-items:center;gap:.7rem}
+.kicker::before{content:"";width:2.2rem;height:1px;background:var(--oro)}
+.kicker.gold{color:var(--oro)}
+.kicker.gold::before{background:var(--oro)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-body);font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2rem;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .3s,color .3s}
+.btn:hover{transform:translateY(-3px)}
+.btn-gold{background:var(--oro);color:#241D10;box-shadow:0 6px 24px rgba(198,151,73,.35)}
+.btn-gold:hover{background:var(--oro-bright);box-shadow:0 12px 32px rgba(198,151,73,.5)}
+.btn-ghost{border-color:rgba(249,246,240,.55);color:var(--crema)}
+.btn-ghost:hover{background:rgba(249,246,240,.12)}
+.btn-terra{background:var(--terra);color:var(--crema)}
+.btn-terra:hover{background:var(--terra-dark)}
+.btn-salvia{background:var(--salvia);color:var(--crema)}
+.btn-salvia:hover{background:var(--salvia-deep)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem clamp(1.25rem,5vw,3rem);display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s,padding .4s}
+header.scrolled{background:rgba(249,246,240,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(58,50,38,.08);padding-block:.75rem}
+.brand{display:flex;align-items:center;gap:.65rem;font-family:var(--f-display);font-size:1.35rem;letter-spacing:.06em;color:var(--crema);transition:color .4s}
+header.scrolled .brand{color:var(--terra)}
+.brand svg{width:26px;height:17px}
+nav.links{display:flex;gap:2.2rem}
+nav.links a{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--crema);opacity:.85;transition:opacity .3s,color .4s;position:relative}
+header.scrolled nav.links a{color:var(--ink)}
+nav.links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:1px;background:var(--oro);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+nav.links a:hover{opacity:1}
+nav.links a:hover::after{transform:scaleX(1)}
+.head-cta{font-size:.7rem;padding:.7rem 1.4rem}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 26s var(--ease) infinite alternate}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,24,18,.72) 0%,rgba(30,24,18,.28) 45%,rgba(30,24,18,.12) 100%)}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.5%,-1%)}}
+.hero-content{position:relative;z-index:2;padding:0 clamp(1.25rem,5vw,4rem) clamp(3.5rem,8vh,6rem);max-width:1300px;margin:0 auto;width:100%}
+.hero .kicker{color:var(--oro-bright)}
+.hero .kicker::before{background:var(--oro-bright)}
+.hero h1{color:var(--crema);font-size:clamp(2.7rem,7.2vw,5.6rem);margin:.9rem 0 1.4rem;font-weight:340}
+.hero h1 em{font-style:italic;color:var(--oro-bright);font-weight:400}
+.mask{display:block;overflow:hidden;padding-bottom:.06em}
+.mask>span{display:block;transform:translateY(112%);animation:rise 1.1s var(--ease) forwards;animation-delay:var(--d,.1s)}
+@keyframes rise{to{transform:none}}
+.hero-lead{color:rgba(249,246,240,.88);max-width:560px;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:300;animation:fadeup 1.2s var(--ease) .9s both}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem;animation:fadeup 1.2s var(--ease) 1.15s both}
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.breath-widget{position:absolute;right:clamp(1.5rem,6vw,6rem);top:50%;transform:translateY(-50%);z-index:2;text-align:center;animation:fadeup 1.4s var(--ease) 1.4s both}
+.breath{width:158px;height:158px;border-radius:50%;position:relative;display:grid;place-items:center;border:1px solid rgba(249,246,240,.5);animation:breathe 8s ease-in-out infinite}
+.breath::before{content:"";position:absolute;inset:16px;border-radius:50%;border:1px solid rgba(249,246,240,.32)}
+.breath::after{content:"";position:absolute;inset:40px;border-radius:50%;background:radial-gradient(circle,rgba(220,175,94,.95) 0%,rgba(198,151,73,.35) 72%,transparent 100%)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+.breath-label{position:relative;z-index:2;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--crema)}
+.breath-sub{margin-top:1rem;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(249,246,240,.65)}
+.marquee{background:var(--terra);color:var(--crema);overflow:hidden;padding:1rem 0;transform:rotate(-.6deg) scale(1.01)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollx 36s linear infinite}
+.marquee span{font-family:var(--f-display);font-style:italic;font-size:1.15rem;white-space:nowrap;display:flex;align-items:center;gap:3rem}
+.marquee span::after{content:"✳";font-style:normal;color:var(--oro-bright);font-size:.9rem}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2.5rem,6vw,6rem);align-items:start}
+.split-left{position:sticky;top:110px}
+.split-left h2{font-size:clamp(2.1rem,4.2vw,3.4rem);margin-top:1rem;font-weight:400}
+.split-right p{color:var(--ink-soft);margin-bottom:1.4rem;max-width:56ch}
+.split-right p strong{color:var(--terra);font-weight:700}
+.falsi{margin-top:2.8rem}
+.falso{border-top:1px solid rgba(58,50,38,.15);padding:1.6rem 0;display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:baseline}
+.falso:last-child{border-bottom:1px solid rgba(58,50,38,.15)}
+.falso-num{font-family:var(--f-display);font-size:2rem;color:var(--crema-2);-webkit-text-stroke:1px var(--terra);font-weight:500}
+.falso h3{font-size:1.25rem;margin-bottom:.35rem}
+.falso p{font-size:.95rem;color:var(--ink-soft);margin:0}
+.immersion{position:relative;height:min(72vh,640px);overflow:hidden;margin:clamp(4rem,8vw,7rem) 0 0}
+.immersion img{width:100%;height:100%;object-fit:cover;animation:kenburns 30s var(--ease) infinite alternate}
+.immersion::after{content:"";position:absolute;inset:0;background:rgba(30,24,18,.42)}
+.immersion blockquote{position:absolute;inset:0;z-index:2;display:grid;place-content:center;text-align:center;padding:2rem;font-family:var(--f-display);font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.6vw,2.8rem);color:var(--crema);line-height:1.3}
+.immersion cite{display:block;margin-top:1.2rem;font-family:var(--f-body);font-style:normal;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro-bright)}
+.eco-head{max-width:720px;margin-bottom:clamp(3rem,6vw,5rem)}
+.eco-head h2{font-size:clamp(2.1rem,4.4vw,3.6rem);margin:1rem 0 1.2rem}
+.eco-head p{color:var(--ink-soft)}
+.eco-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid rgba(58,50,38,.12);position:relative}
+.eco-row:nth-child(even) .eco-media{order:2}
+.eco-num{position:absolute;top:1.2rem;right:0;font-family:var(--f-display);font-size:clamp(5rem,10vw,8.5rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(184,93,67,.28);pointer-events:none}
+.eco-row:nth-child(even) .eco-num{right:auto;left:0}
+.chip{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--salvia);border:1px solid var(--salvia);border-radius:999px;padding:.4rem 1rem;margin-bottom:1.2rem}
+.eco-row h3{font-size:clamp(1.6rem,2.8vw,2.3rem);margin-bottom:.9rem}
+.eco-row p{color:var(--ink-soft);max-width:52ch}
+.eco-media{overflow:hidden;border-radius:6px;aspect-ratio:4/3}
+.eco-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.eco-row:hover .eco-media img{transform:scale(1.05)}
+.giorno{background:var(--crema-2);border-radius:6px;padding:clamp(2.5rem,6vw,5rem)}
+.giorno h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin:.9rem 0 3rem;max-width:620px}
+.timeline{position:relative;display:grid;gap:2.1rem;max-width:760px}
+.timeline::before{content:"";position:absolute;left:96px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--salvia),var(--oro))}
+.t-item{display:grid;grid-template-columns:80px 1fr;gap:2.6rem;align-items:baseline}
+.t-time{font-family:var(--f-display);font-size:1.3rem;color:var(--oro);font-weight:500;text-align:right;position:relative}
+.t-time::after{content:"";position:absolute;right:-22px;top:50%;width:9px;height:9px;border-radius:50%;background:var(--terra);transform:translate(0,-50%)}
+.t-item h4{font-family:var(--f-body);font-size:1rem;font-weight:700;color:var(--salvia);margin-bottom:.2rem}
+.t-item p{font-size:.95rem;color:var(--ink-soft)}
+.metodo-head{max-width:720px;margin-bottom:clamp(3rem,6vw,5rem)}
+.metodo-head h2{font-size:clamp(2.2rem,4.6vw,3.8rem);margin:1rem 0 1.2rem}
+.metodo-head p{color:var(--ink-soft)}
+.pillars{display:grid;gap:1.6rem}
+.pillar{position:sticky;top:calc(92px + var(--i)*20px);border-radius:8px;padding:clamp(2rem,4.5vw,3.5rem);display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1.5rem,4vw,3.5rem);align-items:start;min-height:340px;box-shadow:0 -14px 40px rgba(36,45,33,.12)}
+.pillar.p1{background:var(--crema);border:1px solid rgba(184,93,67,.35)}
+.pillar.p2{background:var(--salvia)}
+.pillar.p3{background:var(--terra)}
+.pillar.p2 h3,.pillar.p3 h3{color:var(--crema)}
+.pillar.p2 .chip,.pillar.p3 .chip{color:var(--crema);border-color:rgba(249,246,240,.6)}
+.p-num{font-family:var(--f-display);font-size:clamp(3rem,6vw,5rem);line-height:.9;font-weight:300;color:transparent;-webkit-text-stroke:1.2px currentColor;opacity:.75}
+.pillar.p1 .p-num{color:var(--terra)}
+.pillar h3{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:1rem}
+.pillar p{color:var(--ink-soft);max-width:56ch}
+.pillar.p2 p,.pillar.p3 p{color:rgba(249,246,240,.85)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.p-img{width:clamp(110px,16vw,190px);aspect-ratio:3/4;overflow:hidden;border-radius:6px}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.numeri{background:var(--bosco);color:var(--crema-su-scuro)}
+.numeri .kicker{color:var(--oro-bright)}
+.numeri .kicker::before{background:var(--oro-bright)}
+.numeri h2{color:var(--crema);font-size:clamp(2.2rem,4.6vw,3.8rem);margin:1rem 0 1.3rem}
+.numeri .lead{color:rgba(237,231,216,.75);max-width:640px;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:clamp(3rem,6vw,5rem)}
+.stat{border-top:1px solid rgba(237,231,216,.2);padding-top:1.4rem}
+.stat-num{font-family:var(--f-display);font-size:clamp(2.6rem,5vw,4.2rem);color:var(--oro-bright);font-weight:400}
+.stat-unit{font-family:var(--f-display);font-size:1.3rem;color:var(--oro-bright);margin-left:.3rem}
+.stat p{font-size:.88rem;color:rgba(237,231,216,.65);margin-top:.4rem}
+.flussi{display:grid;gap:0;margin-bottom:clamp(3rem,6vw,4.5rem)}
+.flusso{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1.2rem,4vw,3rem);align-items:start;padding:2rem 0;border-top:1px solid rgba(237,231,216,.16)}
+.flusso:last-child{border-bottom:1px solid rgba(237,231,216,.16)}
+.f-num{font-family:var(--f-display);font-size:1.6rem;color:rgba(220,175,94,.65)}
+.flusso h3{color:var(--crema);font-size:clamp(1.35rem,2.4vw,1.9rem);margin-bottom:.5rem}
+.flusso p{color:rgba(237,231,216,.72);font-size:.97rem;max-width:62ch}
+.f-tag{font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--oro-bright);border:1px solid rgba(220,175,94,.5);border-radius:999px;padding:.4rem 1rem;white-space:nowrap}
+.mix-block h4{font-family:var(--f-body);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(237,231,216,.6);margin-bottom:2rem}
+.mix-row{margin-bottom:1.8rem}
+.mix-row .lbl{font-size:.85rem;color:rgba(237,231,216,.8);margin-bottom:.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
+.bar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:rgba(237,231,216,.08)}
+.bar span{width:0;transition:width 1.4s var(--ease)}
+.bar .b-terra{background:var(--terra)}
+.bar .b-salvia{background:var(--salvia)}
+.bar .b-oro{background:var(--oro)}
+.legend{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:1.4rem;font-size:.78rem;color:rgba(237,231,216,.65)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.45rem}
+.fonte{margin-top:2.2rem;font-size:.72rem;color:rgba(237,231,216,.4);font-style:italic}
+.porte-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:clamp(2.5rem,5vw,4rem)}
+.door{border-radius:8px;background:#fff;border:1px solid rgba(58,50,38,.12);padding:2.4rem 2rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.door::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--acc);transform:scaleX(.25);transform-origin:left;transition:transform .6s var(--ease)}
+.door:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(36,45,33,.14)}
+.door:hover::before{transform:scaleX(1)}
+.door.d1{--acc:var(--salvia)}
+.door.d2{--acc:var(--terra)}
+.door.d3{--acc:var(--oro)}
+.door .who{font-size:.66rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+.door h3{font-size:1.55rem;margin-bottom:.9rem}
+.door p{font-size:.94rem;color:var(--ink-soft)}
+.door ul{list-style:none;margin:1.3rem 0 1.8rem;display:grid;gap:.55rem}
+.door li{font-size:.9rem;color:var(--ink-soft);padding-left:1.4rem;position:relative}
+.door li::before{content:"—";position:absolute;left:0;color:var(--acc)}
+.door .btn{align-self:flex-start}
+.finale{position:relative;overflow:hidden;text-align:center;padding:clamp(6rem,13vw,11rem) 1.5rem}
+.finale-bg{position:absolute;inset:0}
+.finale-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 28s var(--ease) infinite alternate}
+.finale-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,24,18,.78),rgba(30,24,18,.35))}
+.finale-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.finale blockquote{font-family:var(--f-display);font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,3rem);color:var(--crema);line-height:1.3}
+.finale .nl{margin-top:2.8rem}
+.finale .nl-lbl{font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--oro-bright);display:block;margin-bottom:1.4rem}
+.finale form{display:flex;gap:.8rem;max-width:520px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.finale input{flex:1;min-width:240px;background:transparent;border:none;border-bottom:1px solid rgba(249,246,240,.5);padding:.9rem .2rem;color:var(--crema);font-family:var(--f-body);font-size:1rem;outline:none;transition:border-color .3s}
+.finale input::placeholder{color:rgba(249,246,240,.5)}
+.finale input:focus{border-color:var(--oro-bright)}
+.form-thanks{color:var(--oro-bright);font-family:var(--f-display);font-style:italic;font-size:1.25rem}
+footer{background:var(--bosco);color:rgba(237,231,216,.7);padding:4rem 0 2.5rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-brand{font-family:var(--f-display);font-size:1.6rem;color:var(--crema);display:flex;align-items:center;gap:.6rem}
+.foot-brand svg{width:24px;height:16px;color:var(--oro-bright)}
+.foot-manifesto{font-family:var(--f-display);font-style:italic;margin-top:1rem;color:rgba(237,231,216,.55);max-width:34ch}
+footer h5{font-size:.68rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--oro-bright);margin-bottom:1.1rem}
+footer ul{list-style:none;display:grid;gap:.6rem}
+footer ul a{font-size:.92rem;transition:color .3s}
+footer ul a:hover{color:var(--crema)}
+.foot-bottom{border-top:1px solid rgba(237,231,216,.14);padding-top:1.8rem;display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;color:rgba(237,231,216,.45)}
+@media (max-width:960px){
+  nav.links{display:none}
+  .split{grid-template-columns:1fr}
+  .split-left{position:static}
+  .eco-row{grid-template-columns:1fr}
+  .eco-row:nth-child(even) .eco-media{order:0}
+  .eco-num{display:none}
+  .pillar{grid-template-columns:1fr;min-height:0}
+  .p-img{width:100%;aspect-ratio:16/9}
+  .stats{grid-template-columns:1fr;gap:1.4rem}
+  .flussi .flusso{grid-template-columns:auto 1fr}
+  .f-tag{grid-column:2;justify-self:start}
+  .porte-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+  .timeline::before{left:66px}
+  .t-item{grid-template-columns:52px 1fr;gap:2rem}
+}
+@media (max-width:700px){
+  .breath-widget{position:static;transform:none;margin:2.5rem auto 0;display:flex;flex-direction:column;align-items:center}
+  .hero{align-items:stretch}
+  .hero-content{display:flex;flex-direction:column;justify-content:flex-end}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .mask>span{transform:none}
+  .hero-lead,.hero-ctas,.breath-widget{opacity:1}
+  .reveal{opacity:1;transform:none}
+  .bar span{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header id="header">
+  <a class="brand" href="#top" aria-label="Risvegli — Home">
+    <svg viewBox="0 0 26 17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M3 14a10 10 0 0 1 20 0"/><line x1="0" y1="15.5" x2="26" y2="15.5"/>
+      <line x1="13" y1="0" x2="13" y2="2.6"/><line x1="4.5" y1="4" x2="6.3" y2="5.8"/><line x1="21.5" y1="4" x2="19.7" y2="5.8"/>
+    </svg>
+    Risvegli
+  </a>
+  <nav class="links" aria-label="Navigazione principale">
+    <a href="#paradosso">Il Paradosso</a>
+    <a href="#ecosistema">L'Ecosistema</a>
+    <a href="#metodo">Il Metodo</a>
+    <a href="#numeri">I Numeri</a>
+    <a href="#unisciti">Unisciti</a>
+  </nav>
+  <a href="#unisciti" class="btn btn-gold head-cta">Inizia il risveglio</a>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/01-alba-colline.png" alt="Alba dorata su colline avvolte nella nebbia leggera">
+  </div>
+  <div class="hero-content">
+    <span class="kicker gold">Turismo trasformativo · fisico &amp; digitale</span>
+    <h1>
+      <span class="mask"><span style="--d:.15s">Non sei rotto.</span></span>
+      <span class="mask"><span style="--d:.35s">Sei in letargo.</span></span>
+      <span class="mask"><span style="--d:.55s"><em>È ora di risvegliarsi.</em></span></span>
+    </h1>
+    <p class="hero-lead">Risvegli è il primo ecosistema di turismo trasformativo: la libertà e la bellezza di una vacanza d'autore, protette da una rete di cura — psicologi, naturopati, maestri di Qigong — presente quando la vuoi, invisibile quando non serve. Nessun dogma, nessun obbligo. Solo il ritorno alla tua frequenza naturale.</p>
+    <div class="hero-ctas">
+      <a href="#unisciti" class="btn btn-gold">Inizia il tuo risveglio</a>
+      <a href="#metodo" class="btn btn-ghost">Scopri il metodo</a>
+    </div>
+  </div>
+  <div class="breath-widget" aria-hidden="true">
+    <div class="breath"><span class="breath-label" id="breathLabel">Inspira</span></div>
+    <div class="breath-sub">Respira con noi · 8s</div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>respiro</span><span>radici</span><span>risonanza</span><span>rinascita dolce</span><span>frequenza naturale</span><span>risveglio</span>
+    <span>respiro</span><span>radici</span><span>risonanza</span><span>rinascita dolce</span><span>frequenza naturale</span><span>risveglio</span>
+  </div>
+</div>
+
+<section class="section" id="paradosso">
+  <div class="wrap split">
+    <div class="split-left reveal">
+      <span class="kicker">Il male del secolo</span>
+      <h2>Partiamo per respirare.<br>Torniamo senza fiato.</h2>
+    </div>
+    <div class="split-right">
+      <p class="reveal">Il burnout non va in vacanza. Si imbarca con noi: negli itinerari pieni come agende, nelle spiagge affollate come open space, nella smania di fotografare tutto per non sentire niente. La vacanza moderna è diventata <strong>l'ennesima performance da ottimizzare</strong> — e il riposo un'abilità che nessuno ci ha insegnato.</p>
+      <p class="reveal" style="--d:.1s">I ritiri spirituali, dall'altra parte, chiedono troppo: dogmi, silenzi forzati, rinunce. Per questo Risvegli ha costruito una <strong>quarta via</strong>: la bellezza e la libertà del viaggio premium, con una rete di protezione e cura sempre a disposizione. Niente è obbligatorio. Tutto è possibile.</p>
+      <div class="falsi">
+        <div class="falso reveal" style="--d:.1s">
+          <span class="falso-num">01</span>
+          <div><h3>Il paradosso della fuga</h3><p>Fuggiamo dallo stress per ritrovarlo sotto altre spoglie: voli incastrati, programmi serrati, il dovere di divertirsi.</p></div>
+        </div>
+        <div class="falso reveal" style="--d:.2s">
+          <span class="falso-num">02</span>
+          <div><h3>La distrazione che non cura</h3><p>Spa affollate e aperitivi infiniti: anestetici eleganti che sfiorano la superficie senza mai toccare il punto.</p></div>
+        </div>
+        <div class="falso reveal" style="--d:.3s">
+          <span class="falso-num">03</span>
+          <div><h3>L'estremo che allontana</h3><p>Ritiri rigidi e ascetici, percepiti come punizioni. La cura, per funzionare, deve somigliare alla vita che desideri.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <figure class="immersion">
+    <img src="img/02-mani-terra.png" alt="Mani che toccano la terra umida tra radici e muschio">
+    <blockquote>
+      «La quiete non è assenza di movimento.<br>È presenza.»
+      <cite>Dal Metodo Risvegli</cite>
+    </blockquote>
+  </figure>
+</section>
+
+<section class="section" id="ecosistema">
+  <div class="wrap">
+    <div class="eco-head reveal">
+      <span class="kicker">L'ecosistema · hub &amp; spoke</span>
+      <h2>Un solo respiro, in tre luoghi.</h2>
+      <p>Hub &amp; Spoke, fisico e digitale: Risvegli ti raggiunge dove sei, e resta con te quando torni.</p>
+    </div>
+
+    <div class="eco-row reveal">
+      <span class="eco-num" aria-hidden="true">01</span>
+      <div class="eco-media"><img src="img/03-casale-santuario.png" alt="Casale in pietra avvolto dalla luce calda del mattino"></div>
+      <div>
+        <span class="chip">L'Hub · La Casa Madre</span>
+        <h3>Il Santuario</h3>
+        <p>Una dimora in esclusiva, pensata come un nido: poche stanze, materiali veri, luce giusta. Qui il Metodo Risvegli vive nella sua forma più pura — retreat brevi, immersioni di 3–5 giorni, il primo assaggio di risveglio per chi vuole aprire gli occhi senza cambiare vita.</p>
+      </div>
+    </div>
+
+    <div class="eco-row reveal">
+      <span class="eco-num" aria-hidden="true">02</span>
+      <div class="eco-media"><img src="img/04-barca-vela.png" alt="Barca a vela al tramonto in un mare calmo e dorato"></div>
+      <div>
+        <span class="chip">I Viaggi Itineranti · Le Mete</span>
+        <h3>Il benessere viaggia con noi</h3>
+        <p>Una barca a vela nel silenzio delle Eolie, un casale tra le colline toscane, un rifugio d'alta quota. Portiamo il nostro team, il metodo e la frequenza nelle location più belle d'Italia. Tu porta solo la voglia di partire: al resto pensa il viaggio.</p>
+      </div>
+    </div>
+
+    <div class="eco-row reveal">
+      <span class="eco-num" aria-hidden="true">03</span>
+      <div class="eco-media"><img src="img/05-tisana-finestra.png" alt="Luce del mattino che entra da una finestra accanto a una tazza di tisana"></div>
+      <div>
+        <span class="chip">L'Ecosistema Digitale · L'App</span>
+        <h3>Il risveglio continua</h3>
+        <p>Il viaggio finisce, il respiro no. Pratiche quotidiane di 10 minuti, audio a 432&nbsp;Hz, il tuo diario dell'energia, i professionisti che hai conosciuto sempre a un tocco di distanza. Il ritorno a casa smette di essere un trauma: diventa il capitolo successivo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:clamp(4rem,8vw,6.5rem)">
+    <div class="giorno reveal">
+      <span class="kicker">Una giornata tipo</span>
+      <h2>Il lusso di non avere orari. Tranne quelli del sole.</h2>
+      <div class="timeline">
+        <div class="t-item reveal" style="--d:.05s"><span class="t-time">06:45</span><div><h4>Qigong all'alba</h4><p>Movimenti lenti mentre la luce cambia. Nessuna performance, solo presenza.</p></div></div>
+        <div class="t-item reveal" style="--d:.1s"><span class="t-time">08:30</span><div><h4>Colazione naturopatica</h4><p>Il cibo come medicina gentile: stagionale, consapevole, mai punitivo.</p></div></div>
+        <div class="t-item reveal" style="--d:.15s"><span class="t-time">10:30</span><div><h4>Walk &amp; Talk</h4><p>Psicologia in cammino: le parole scorrono meglio quando il corpo si muove.</p></div></div>
+        <div class="t-item reveal" style="--d:.2s"><span class="t-time">13:00</span><div><h4>Tempo libero, davvero</h4><p>Un libro, un bagno, il lusso del non-programma. La noia è una porta.</p></div></div>
+        <div class="t-item reveal" style="--d:.25s"><span class="t-time">17:30</span><div><h4>Bagno di frequenze</h4><p>Suoni a 432&nbsp;Hz per accordare il sistema nervoso come si accorda uno strumento.</p></div></div>
+        <div class="t-item reveal" style="--d:.3s"><span class="t-time">21:00</span><div><h4>Cerchio della sera</h4><p>Condivisione senza giudizio, tisane, stelle. E poi sonno: quello vero.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="metodo">
+  <div class="wrap">
+    <div class="metodo-head reveal">
+      <span class="kicker">Il Metodo Risvegli</span>
+      <h2>Non siamo una spa.<br>Siamo un metodo.</h2>
+      <p>Tre discipline, un'unica direzione: togliere gli strati, non aggiungere promesse. Ogni pratica è guidata da professionisti certificati — e sempre facoltativa. La sola regola è ascoltarsi.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar p1" style="--i:0">
+        <span class="p-num" aria-hidden="true">I</span>
+        <div>
+          <h3>Psicologia Integrata</h3>
+          <p>Nessuna scrivania clinica, nessuna distanza terapeutica. I nostri psicologi lavorano in cammino, nel paesaggio: perché un blocco emotivo si scioglie più facilmente quando il corpo è in movimento e l'orizzonte è aperto. Consulenze one-to-one, sessioni di gruppo, strumenti della psicologia contemporanea applicati alla vita reale.</p>
+          <div class="chips"><span class="chip">Walk &amp; Talk</span><span class="chip">Psicologia positiva</span><span class="chip">Gestione dello stress</span><span class="chip">Sessioni online post-viaggio</span></div>
+        </div>
+        <div class="p-img"><img src="img/06-sentiero-bosco.png" alt="Sentiero in un bosco illuminato da raggi di sole"></div>
+      </article>
+
+      <article class="pillar p2" style="--i:1">
+        <span class="p-num" aria-hidden="true">II</span>
+        <div>
+          <h3>Naturopatia Pratica</h3>
+          <p>Il cibo è la prima medicina, il bioritmo la prima casa. Ripartiamo dalle fondamenta: alimentazione consapevole senza privazioni, fitoterapia dolce, rituali del sonno, ripristino dei ritmi circadiani. Non una dieta: un'educazione che resta.</p>
+          <div class="chips"><span class="chip">Alimentazione consapevole</span><span class="chip">Fitoterapia</span><span class="chip">Igiene del sonno</span><span class="chip">Bioritmo</span></div>
+        </div>
+        <div class="p-img"><img src="img/07-tavola-naturale.png" alt="Tavola con cibi naturali e stagionali"></div>
+      </article>
+
+      <article class="pillar p3" style="--i:2">
+        <span class="p-num" aria-hidden="true">III</span>
+        <div>
+          <h3>Pratiche Energetiche</h3>
+          <p>Il corpo sa. Va solo riacceso. Qigong per smuovere l'energia vitale, meditazione senza incensi né dogmi, immersioni sonore a 432&nbsp;Hz per riportare il sistema nervoso alla sua accordatura naturale.</p>
+          <div class="chips"><span class="chip">Qigong</span><span class="chip">Meditazione laica</span><span class="chip">Sound bath 432 Hz</span><span class="chip">Respiro consapevole</span></div>
+        </div>
+        <div class="p-img"><img src="img/08-campane-suono.png" alt="Strumenti sonori artigianali nella luce dell'alba"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section numeri" id="numeri">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker gold">Per i partner · Sostenibilità finanziaria</span>
+      <h2>Bello per l'anima.<br>Solido per i numeri.</h2>
+      <p class="lead">Risvegli non è un gesto poetico: è un modello industriale. Un ecosistema che genera valore prima, durante e dopo il viaggio, con tre flussi di ricavo che si alimentano a vicenda — e trasformano una vacanza in una relazione.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><span class="stat-num" data-count="700" data-suffix="+">0</span><span class="stat-unit">mld €</span><p>Il valore stimato del turismo del benessere nel mondo (GWI).</p></div>
+      <div class="stat reveal" style="--d:.15s"><span class="stat-num" data-count="2" data-prefix="×">0</span><p>La crescita del wellness travel rispetto al turismo tradizionale.</p></div>
+      <div class="stat reveal" style="--d:.3s"><span class="stat-num" data-count="3">0</span><p>Flussi di ricavo integrati: booking, abbonamenti, marketplace.</p></div>
+    </div>
+
+    <div class="flussi">
+      <div class="flusso reveal">
+        <span class="f-num">01</span>
+        <div><h3>Booking Premium</h3><p>Vacanze ad alto valore, margini premium, posizionamento alto di gamma. Il viaggio è la porta d'ingresso dell'ecosistema: chi entra, resta.</p></div>
+        <span class="f-tag">High ticket</span>
+      </div>
+      <div class="flusso reveal" style="--d:.1s">
+        <span class="f-num">02</span>
+        <div><h3>Abbonamenti App</h3><p>La vacanza dura una settimana, l'abbonamento dura tutto l'anno. Pratiche quotidiane, biblioteca sonora, percorsi guidati: entrate ricorrenti che trasformano ogni ospite in una relazione di lungo periodo.</p></div>
+        <span class="f-tag">Recurring revenue</span>
+      </div>
+      <div class="flusso reveal" style="--d:.2s">
+        <span class="f-num">03</span>
+        <div><h3>Mercato delle Consulenze</h3><p>Dopo il viaggio, la cura continua. Commissioni sulle sedute online con gli psicologi e i naturopati incontrati in vacanza: lead generation qualificata per i professionisti, valore continuo per gli ospiti.</p></div>
+        <span class="f-tag">Marketplace</span>
+      </div>
+    </div>
+
+    <div class="mix-block reveal">
+      <h4>Mix atteso dei ricavi</h4>
+      <div class="mix-row">
+        <div class="lbl"><span>Anno 1</span><span>Booking 70% · App 20% · Consulti 10%</span></div>
+        <div class="bar"><span class="b-terra" data-w="70"></span><span class="b-salvia" data-w="20"></span><span class="b-oro" data-w="10"></span></div>
+      </div>
+      <div class="mix-row">
+        <div class="lbl"><span>A regime (Anno 3)</span><span>Booking 45% · App 35% · Consulti 20%</span></div>
+        <div class="bar"><span class="b-terra" data-w="45"></span><span class="b-salvia" data-w="35"></span><span class="b-oro" data-w="20"></span></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--terra)"></i>Booking Premium</span>
+        <span><i style="background:var(--salvia)"></i>Abbonamenti App</span>
+        <span><i style="background:var(--oro)"></i>Consulenze</span>
+      </div>
+      <p class="fonte">Fonti di mercato: stime Global Wellness Institute. Proiezioni interne soggette a validazione nel business plan completo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="unisciti">
+  <div class="wrap">
+    <div class="eco-head reveal">
+      <span class="kicker">Unisciti all'ecosistema</span>
+      <h2>Un ecosistema si costruisce in tanti.<br>Scegli la tua porta.</h2>
+    </div>
+
+    <div class="porte-grid">
+      <div class="door d1 reveal">
+        <span class="who">Porta Verde</span>
+        <h3>Per i professionisti del benessere</h3>
+        <p>Psicologi, naturopati, insegnanti di Qigong, guide: il vostro dono merita un palco all'alba.</p>
+        <ul>
+          <li>Entra nel Comitato del Metodo</li>
+          <li>Guida i retreat nelle Mete Risvegli</li>
+          <li>Formazione dedicata + clienti qualificati</li>
+        </ul>
+        <a href="mailto:professionisti@risvegli.it" class="btn btn-salvia">Candidati al Comitato</a>
+      </div>
+
+      <div class="door d2 reveal" style="--d:.12s">
+        <span class="who">Porta Terracotta</span>
+        <h3>Per le strutture ricettive</h3>
+        <p>Hotel, borghi, resort, dimore: la tua location, la nostra frequenza.</p>
+        <ul>
+          <li>Ospiti alto-spendenti in bassa stagione</li>
+          <li>Format chiavi in mano + formazione staff</li>
+          <li>Posizionamento premium immediato</li>
+        </ul>
+        <a href="mailto:strutture@risvegli.it" class="btn btn-terra">Proponi la tua struttura</a>
+      </div>
+
+      <div class="door d3 reveal" style="--d:.24s">
+        <span class="who">Porta d'Oro</span>
+        <h3>Per soci e investitori</h3>
+        <p>Un mercato miliardario in piena espansione, un modello scalabile, un brand con un'anima.</p>
+        <ul>
+          <li>Business plan completo e data room</li>
+          <li>Modello a tre ricavi, scalabile</li>
+          <li>Impatto reale sulla salute mentale</li>
+        </ul>
+        <a href="mailto:investor@risvegli.it" class="btn btn-gold">Richiedi il Business Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finale">
+  <div class="finale-bg"><img src="img/09-prima-luce.png" alt="Prima luce dell'alba sull'orizzonte"></div>
+  <div class="finale-inner reveal">
+    <blockquote>«Non aggiungiamo nulla a chi sei.<br>Togliamo gli strati — finché non torni a risuonare.»</blockquote>
+    <div class="nl" id="formWrap">
+      <span class="nl-lbl">La Prima Luce — una lettera al mese. Pratiche, partenze, pensieri lenti. Niente rumore.</span>
+      <form id="formLuce">
+        <input type="email" required placeholder="La tua email" aria-label="Il tuo indirizzo email">
+        <button type="submit" class="btn btn-gold">Voglio la prima luce</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 26 17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M3 14a10 10 0 0 1 20 0"/><line x1="0" y1="15.5" x2="26" y2="15.5"/>
+            <line x1="13" y1="0" x2="13" y2="2.6"/><line x1="4.5" y1="4" x2="6.3" y2="5.8"/><line x1="21.5" y1="4" x2="19.7" y2="5.8"/>
+          </svg>
+          Risvegli
+        </div>
+        <p class="foot-manifesto">La tua frequenza naturale ti sta aspettando. Noi camminiamo con te, fino all'alba.</p>
+      </div>
+      <div>
+        <h5>Esplora</h5>
+        <ul>
+          <li><a href="#paradosso">Il Paradosso</a></li>
+          <li><a href="#ecosistema">L'Ecosistema</a></li>
+          <li><a href="#metodo">Il Metodo</a></li>
+          <li><a href="#unisciti">Unisciti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contatti</h5>
+        <ul>
+          <li><a href="mailto:ciao@risvegli.it">ciao@risvegli.it</a></li>
+          <li><a href="mailto:investor@risvegli.it">investor@risvegli.it</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Risvegli · Turismo Trasformativo</span>
+      <span>Risvegli è un progetto di benessere integrato: le attività proposte non sostituiscono percorsi medici o psicoterapeutici.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  function animateCount(el){
+    var target = parseFloat(el.dataset.count);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    if(reduced){ el.textContent = prefix + target + suffix; return; }
+    var start = null, dur = 1400;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var ioCount = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animateCount(e.target); ioCount.unobserve(e.target); }
+    });
+  }, {threshold:.5});
+  document.querySelectorAll('.stat-num').forEach(function(el){ ioCount.observe(el); });
+
+  var ioBars = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.bar span').forEach(function(s){
+          s.style.width = s.dataset.w + '%';
+        });
+        ioBars.unobserve(e.target);
+      }
+    });
+  }, {threshold:.4});
+  document.querySelectorAll('.mix-block').forEach(function(el){ ioBars.observe(el); });
+
+  var lbl = document.getElementById('breathLabel');
+  if(lbl){
+    if(reduced){ lbl.textContent = 'Respira'; }
+    else{
+      var inhale = true;
+      setInterval(function(){
+        inhale = !inhale;
+        lbl.textContent = inhale ? 'Inspira' : 'Espira';
+      }, 4000);
+    }
+  }
+
+  var form = document.getElementById('formLuce');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('formWrap').innerHTML =
+        '<p class="form-thanks">La prima luce è in viaggio verso la tua casella. ✳ Benvenuto nel risveglio.</p>';
+    });
+  }
+})();
+</script>
+</body>
+</html>
