@@ -81,10 +81,10 @@ nav.links a:hover::after{transform:scaleX(1)}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 26s var(--ease) infinite alternate}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,24,18,.72) 0%,rgba(30,24,18,.32) 45%,rgba(30,24,18,.26) 78%,rgba(30,24,18,.5) 100%)}
-.hero .kicker,header:not(.scrolled):not(.open) .brand,header:not(.scrolled) nav.links a{text-shadow:0 1px 2px rgba(30,24,18,.45),0 0 18px rgba(30,24,18,.35)}
+header:not(.scrolled):not(.open) .brand,header:not(.scrolled) nav.links a{text-shadow:0 1px 2px rgba(30,24,18,.45),0 0 18px rgba(30,24,18,.35)}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.5%,-1%)}}
 .hero-content{position:relative;z-index:2;padding:0 clamp(1.25rem,5vw,4rem) clamp(3.5rem,8vh,6rem);max-width:1300px;margin:0 auto;width:100%}
-.hero .kicker{color:var(--oro-bright)}
+.hero .kicker{color:var(--crema);background:rgba(30,24,18,.42);padding:.55rem 1.1rem;border-radius:.9rem;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .hero .kicker::before{background:var(--oro-bright)}
 .hero h1{color:var(--crema);font-size:clamp(2.7rem,7.2vw,5.6rem);margin:.9rem 0 1.4rem;font-weight:340}
 .hero h1 em{font-style:italic;color:var(--oro-bright);font-weight:400}
@@ -258,10 +258,7 @@ footer ul a:hover{color:var(--crema)}
 }
 @media (max-width:700px){
   .hero{flex-direction:column;justify-content:flex-end;align-items:stretch;padding-top:6rem}
-  .breath-widget{position:static;transform:none;order:-1;margin:0 auto 1rem;display:flex;flex-direction:column;align-items:center}
-  .breath{width:110px;height:110px}
-  .breath::before{inset:12px}
-  .breath::after{inset:28px}
+  .breath-widget{position:static;transform:none;margin:2.5rem auto 0;display:flex;flex-direction:column;align-items:center}
 }
 @media (max-width:520px){
   .head-cta{display:none}
