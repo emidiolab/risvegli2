@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Risvegli — Turismo Trasformativo | Non sei rotto, sei in letargo</title>
 <meta name="description" content="Risvegli è il primo ecosistema di turismo trasformativo: la libertà di una vacanza d'autore con una rete di cura professionale e mai obbligatoria.">
+<meta name="theme-color" content="#F9F6F0">
+<link rel="canonical" href="https://emidiolab.github.io/risvegli2/">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Risvegli">
+<meta property="og:title" content="Risvegli — Non sei rotto, sei in letargo">
+<meta property="og:description" content="Turismo trasformativo: la libertà di una vacanza d'autore, con una rete di cura professionale presente quando la vuoi e mai obbligatoria.">
+<meta property="og:url" content="https://emidiolab.github.io/risvegli2/">
+<meta property="og:image" content="https://emidiolab.github.io/risvegli2/img/og-risvegli.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alba dorata su colline avvolte nella nebbia leggera">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -60,10 +76,12 @@ nav.links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;he
 nav.links a:hover{opacity:1}
 nav.links a:hover::after{transform:scaleX(1)}
 .head-cta{font-size:.7rem;padding:.7rem 1.4rem}
+.menu-btn{display:none}
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 26s var(--ease) infinite alternate}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,24,18,.72) 0%,rgba(30,24,18,.28) 45%,rgba(30,24,18,.12) 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,24,18,.72) 0%,rgba(30,24,18,.32) 45%,rgba(30,24,18,.26) 78%,rgba(30,24,18,.5) 100%)}
+.hero .kicker,header:not(.scrolled):not(.open) .brand,header:not(.scrolled) nav.links a{text-shadow:0 1px 2px rgba(30,24,18,.45),0 0 18px rgba(30,24,18,.35)}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.5%,-1%)}}
 .hero-content{position:relative;z-index:2;padding:0 clamp(1.25rem,5vw,4rem) clamp(3.5rem,8vh,6rem);max-width:1300px;margin:0 auto;width:100%}
 .hero .kicker{color:var(--oro-bright)}
@@ -200,6 +218,7 @@ nav.links a:hover::after{transform:scaleX(1)}
 .finale input::placeholder{color:rgba(249,246,240,.5)}
 .finale input:focus{border-color:var(--oro-bright)}
 .form-thanks{color:var(--oro-bright);font-family:var(--f-display);font-style:italic;font-size:1.25rem}
+.form-err{margin-top:1rem;font-size:.9rem;color:var(--crema)}
 footer{background:var(--bosco);color:rgba(237,231,216,.7);padding:4rem 0 2.5rem}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .foot-brand{font-family:var(--f-display);font-size:1.6rem;color:var(--crema);display:flex;align-items:center;gap:.6rem}
@@ -211,7 +230,17 @@ footer ul a{font-size:.92rem;transition:color .3s}
 footer ul a:hover{color:var(--crema)}
 .foot-bottom{border-top:1px solid rgba(237,231,216,.14);padding-top:1.8rem;display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;color:rgba(237,231,216,.45)}
 @media (max-width:960px){
-  nav.links{display:none}
+  .head-cta{margin-left:auto}
+  .menu-btn{display:grid;place-content:center;gap:6px;width:44px;height:44px;margin-left:.6rem;background:none;border:0;cursor:pointer;color:var(--crema)}
+  header.scrolled .menu-btn,header.open .menu-btn{color:var(--ink)}
+  .menu-btn span{display:block;width:22px;height:1.5px;background:currentColor;transition:transform .35s var(--ease)}
+  header.open .menu-btn span:first-child{transform:translateY(3.75px) rotate(45deg)}
+  header.open .menu-btn span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+  header.open .brand{color:var(--terra)}
+  nav.links{position:fixed;top:0;left:0;right:0;z-index:-1;flex-direction:column;gap:0;padding:5.5rem clamp(1.25rem,5vw,3rem) 1.5rem;background:var(--crema);box-shadow:0 18px 40px rgba(36,45,33,.16);transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
+  header.open nav.links{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+  nav.links a,header.scrolled nav.links a{color:var(--ink);font-size:.8rem;padding:1rem 0;border-bottom:1px solid rgba(58,50,38,.1);opacity:1;text-shadow:none}
+  nav.links a::after{display:none}
   .split{grid-template-columns:1fr}
   .split-left{position:static}
   .eco-row{grid-template-columns:1fr}
@@ -228,9 +257,15 @@ footer ul a:hover{color:var(--crema)}
   .t-item{grid-template-columns:52px 1fr;gap:2rem}
 }
 @media (max-width:700px){
-  .breath-widget{position:static;transform:none;margin:2.5rem auto 0;display:flex;flex-direction:column;align-items:center}
-  .hero{align-items:stretch}
-  .hero-content{display:flex;flex-direction:column;justify-content:flex-end}
+  .hero{flex-direction:column;justify-content:flex-end;align-items:stretch;padding-top:6rem}
+  .breath-widget{position:static;transform:none;order:-1;margin:0 auto 1rem;display:flex;flex-direction:column;align-items:center}
+  .breath{width:110px;height:110px}
+  .breath::before{inset:12px}
+  .breath::after{inset:28px}
+}
+@media (max-width:520px){
+  .head-cta{display:none}
+  .menu-btn{margin-left:auto}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -254,7 +289,7 @@ footer ul a:hover{color:var(--crema)}
     </svg>
     Risvegli
   </a>
-  <nav class="links" aria-label="Navigazione principale">
+  <nav class="links" id="menu" aria-label="Navigazione principale">
     <a href="#paradosso">Il Paradosso</a>
     <a href="#ecosistema">L'Ecosistema</a>
     <a href="#metodo">Il Metodo</a>
@@ -262,13 +297,14 @@ footer ul a:hover{color:var(--crema)}
     <a href="#unisciti">Unisciti</a>
   </nav>
   <a href="#unisciti" class="btn btn-gold head-cta">Inizia il risveglio</a>
+  <button class="menu-btn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Apri il menu"><span></span><span></span></button>
 </header>
 
 <main id="top">
 
 <section class="hero">
   <div class="hero-bg">
-    <img src="img/01-alba-colline.png" alt="Alba dorata su colline avvolte nella nebbia leggera">
+    <img src="img/01-alba-colline.webp" fetchpriority="high" alt="Alba dorata su colline avvolte nella nebbia leggera">
   </div>
   <div class="hero-content">
     <span class="kicker gold">Turismo trasformativo · fisico &amp; digitale</span>
@@ -323,7 +359,7 @@ footer ul a:hover{color:var(--crema)}
   </div>
 
   <figure class="immersion">
-    <img src="img/02-mani-terra.png" alt="Mani che toccano la terra umida tra radici e muschio">
+    <img src="img/02-mani-terra.webp" loading="lazy" decoding="async" alt="Mani che toccano la terra umida tra radici e muschio">
     <blockquote>
       «La quiete non è assenza di movimento.<br>È presenza.»
       <cite>Dal Metodo Risvegli</cite>
@@ -341,7 +377,7 @@ footer ul a:hover{color:var(--crema)}
 
     <div class="eco-row reveal">
       <span class="eco-num" aria-hidden="true">01</span>
-      <div class="eco-media"><img src="img/03-casale-santuario.png" alt="Casale in pietra avvolto dalla luce calda del mattino"></div>
+      <div class="eco-media"><img src="img/03-casale-santuario.webp" loading="lazy" decoding="async" alt="Casale in pietra avvolto dalla luce calda del mattino"></div>
       <div>
         <span class="chip">L'Hub · La Casa Madre</span>
         <h3>Il Santuario</h3>
@@ -351,7 +387,7 @@ footer ul a:hover{color:var(--crema)}
 
     <div class="eco-row reveal">
       <span class="eco-num" aria-hidden="true">02</span>
-      <div class="eco-media"><img src="img/04-barca-vela.png" alt="Barca a vela al tramonto in un mare calmo e dorato"></div>
+      <div class="eco-media"><img src="img/04-barca-vela.webp" loading="lazy" decoding="async" alt="Barca a vela al tramonto in un mare calmo e dorato"></div>
       <div>
         <span class="chip">I Viaggi Itineranti · Le Mete</span>
         <h3>Il benessere viaggia con noi</h3>
@@ -361,7 +397,7 @@ footer ul a:hover{color:var(--crema)}
 
     <div class="eco-row reveal">
       <span class="eco-num" aria-hidden="true">03</span>
-      <div class="eco-media"><img src="img/05-tisana-finestra.png" alt="Luce del mattino che entra da una finestra accanto a una tazza di tisana"></div>
+      <div class="eco-media"><img src="img/05-tisana-finestra.webp" loading="lazy" decoding="async" alt="Luce del mattino che entra da una finestra accanto a una tazza di tisana"></div>
       <div>
         <span class="chip">L'Ecosistema Digitale · L'App</span>
         <h3>Il risveglio continua</h3>
@@ -402,7 +438,7 @@ footer ul a:hover{color:var(--crema)}
           <p>Nessuna scrivania clinica, nessuna distanza terapeutica. I nostri psicologi lavorano in cammino, nel paesaggio: perché un blocco emotivo si scioglie più facilmente quando il corpo è in movimento e l'orizzonte è aperto. Consulenze one-to-one, sessioni di gruppo, strumenti della psicologia contemporanea applicati alla vita reale.</p>
           <div class="chips"><span class="chip">Walk &amp; Talk</span><span class="chip">Psicologia positiva</span><span class="chip">Gestione dello stress</span><span class="chip">Sessioni online post-viaggio</span></div>
         </div>
-        <div class="p-img"><img src="img/06-sentiero-bosco.png" alt="Sentiero in un bosco illuminato da raggi di sole"></div>
+        <div class="p-img"><img src="img/06-sentiero-bosco.webp" loading="lazy" decoding="async" alt="Sentiero in un bosco illuminato da raggi di sole"></div>
       </article>
 
       <article class="pillar p2" style="--i:1">
@@ -412,7 +448,7 @@ footer ul a:hover{color:var(--crema)}
           <p>Il cibo è la prima medicina, il bioritmo la prima casa. Ripartiamo dalle fondamenta: alimentazione consapevole senza privazioni, fitoterapia dolce, rituali del sonno, ripristino dei ritmi circadiani. Non una dieta: un'educazione che resta.</p>
           <div class="chips"><span class="chip">Alimentazione consapevole</span><span class="chip">Fitoterapia</span><span class="chip">Igiene del sonno</span><span class="chip">Bioritmo</span></div>
         </div>
-        <div class="p-img"><img src="img/07-tavola-naturale.png" alt="Tavola con cibi naturali e stagionali"></div>
+        <div class="p-img"><img src="img/07-tavola-naturale.webp" loading="lazy" decoding="async" alt="Tavola con cibi naturali e stagionali"></div>
       </article>
 
       <article class="pillar p3" style="--i:2">
@@ -422,7 +458,7 @@ footer ul a:hover{color:var(--crema)}
           <p>Il corpo sa. Va solo riacceso. Qigong per smuovere l'energia vitale, meditazione senza incensi né dogmi, immersioni sonore a 432&nbsp;Hz per riportare il sistema nervoso alla sua accordatura naturale.</p>
           <div class="chips"><span class="chip">Qigong</span><span class="chip">Meditazione laica</span><span class="chip">Sound bath 432 Hz</span><span class="chip">Respiro consapevole</span></div>
         </div>
-        <div class="p-img"><img src="img/08-campane-suono.png" alt="Strumenti sonori artigianali nella luce dell'alba"></div>
+        <div class="p-img"><img src="img/08-campane-suono.webp" loading="lazy" decoding="async" alt="Strumenti sonori artigianali nella luce dell'alba"></div>
       </article>
     </div>
   </div>
@@ -528,13 +564,15 @@ footer ul a:hover{color:var(--crema)}
 </section>
 
 <section class="finale">
-  <div class="finale-bg"><img src="img/09-prima-luce.png" alt="Prima luce dell'alba sull'orizzonte"></div>
+  <div class="finale-bg"><img src="img/09-prima-luce.webp" loading="lazy" decoding="async" alt="Prima luce dell'alba sull'orizzonte"></div>
   <div class="finale-inner reveal">
     <blockquote>«Non aggiungiamo nulla a chi sei.<br>Togliamo gli strati — finché non torni a risuonare.»</blockquote>
-    <div class="nl" id="formWrap">
+    <!-- Newsletter: resta nascosta finché data-endpoint è vuoto. Per attivarla incollare
+         in data-endpoint l'URL del modulo (Brevo, Formspree, ...) e aggiungere l'informativa privacy. -->
+    <div class="nl" id="formWrap" hidden>
       <span class="nl-lbl">La Prima Luce — una lettera al mese. Pratiche, partenze, pensieri lenti. Niente rumore.</span>
-      <form id="formLuce">
-        <input type="email" required placeholder="La tua email" aria-label="Il tuo indirizzo email">
+      <form id="formLuce" data-endpoint="">
+        <input type="email" name="email" required placeholder="La tua email" aria-label="Il tuo indirizzo email">
         <button type="submit" class="btn btn-gold">Voglio la prima luce</button>
       </form>
     </div>
@@ -570,13 +608,11 @@ footer ul a:hover{color:var(--crema)}
         <ul>
           <li><a href="mailto:ciao@risvegli.it">ciao@risvegli.it</a></li>
           <li><a href="mailto:investor@risvegli.it">investor@risvegli.it</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2025 Risvegli · Turismo Trasformativo</span>
+      <span>© 2026 Risvegli · Turismo Trasformativo</span>
       <span>Risvegli è un progetto di benessere integrato: le attività proposte non sostituiscono percorsi medici o psicoterapeutici.</span>
     </div>
   </div>
@@ -589,6 +625,18 @@ footer ul a:hover{color:var(--crema)}
   window.addEventListener('scroll', function(){
     header.classList.toggle('scrolled', window.scrollY > 40);
   }, {passive:true});
+
+  var menuBtn = header.querySelector('.menu-btn');
+  function setMenu(open){
+    header.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+  }
+  menuBtn.addEventListener('click', function(){ setMenu(!header.classList.contains('open')); });
+  header.querySelectorAll('nav.links a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
 
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -644,11 +692,26 @@ footer ul a:hover{color:var(--crema)}
   }
 
   var form = document.getElementById('formLuce');
-  if(form){
+  if(form && form.dataset.endpoint){
+    var formWrap = document.getElementById('formWrap');
+    formWrap.hidden = false;
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      document.getElementById('formWrap').innerHTML =
-        '<p class="form-thanks">La prima luce è in viaggio verso la tua casella. ✳ Benvenuto nel risveglio.</p>';
+      fetch(form.dataset.endpoint, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+        .then(function(r){
+          if(!r.ok) throw new Error(r.status);
+          formWrap.innerHTML = '<p class="form-thanks" role="status">La prima luce è in viaggio verso la tua casella. ✳ Ti diamo il benvenuto nel risveglio.</p>';
+        })
+        .catch(function(){
+          var err = formWrap.querySelector('.form-err');
+          if(!err){
+            err = document.createElement('p');
+            err.className = 'form-err';
+            err.setAttribute('role', 'alert');
+            formWrap.appendChild(err);
+          }
+          err.textContent = 'Non siamo riusciti a registrare la tua email. Riprova tra poco.';
+        });
     });
   }
 })();
